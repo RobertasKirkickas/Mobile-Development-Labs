@@ -19,6 +19,7 @@ export default function LocationSearch({ updateLocation }) {
                 placeholder="Search location..."
                 placeholderTextColor="#FFF"
                 style={styles.input}
+                onSubmitEditing={() => updateLocation(text)}
                 onChangeText={changeHandler}
             />
             <TouchableOpacity style={styles.button} onPress={() => updateLocation(text)}>

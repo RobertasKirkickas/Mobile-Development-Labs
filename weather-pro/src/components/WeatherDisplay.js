@@ -9,6 +9,12 @@ export default function WeatherDisplay({ weatherData }) {
 
                 <View style={styles.weatherDetails}>
 
+                <Text style={[styles.weatherDetailText, styles.weatherDescription]} >
+
+                {weatherData.name || "Unknown Location"}
+
+                </Text>
+
                     <Image source={{
                         uri: 'https://openweathermap.org/img/wn/' + weatherData.icon +
                             '@2x.png'

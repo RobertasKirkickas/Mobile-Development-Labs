@@ -17,6 +17,7 @@ export default function App() {
       .then(json => {
         console.log(JSON.stringify(json, null, 2));
         setWeatherData({
+          name: json.name,
           temp: json.main.temp,
           humidity: json.main.humidity,
           pressure: json.main.pressure,
