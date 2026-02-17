@@ -1,15 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Pressable } from 'react-native';
 
 export default function HomeScreen({ navigation }) {
 	return (
 		<View style={styles.HomeScreen}>
-			<TouchableOpacity onPress={() => navigation.navigate('Photos')}>
+			<Pressable onPress={() => navigation.navigate('Photos')}>
 				<Text>Browse Photos</Text>
-			</TouchableOpacity>
-			<TouchableOpacity onPress={() => navigation.navigate('Collections')}>
+			</Pressable>
+			<Pressable onPress={() => navigation.navigate('Collections')}>
 				<Text>Browse Collections</Text>
-			</TouchableOpacity>
+			</Pressable>
 		</View>
 	);
 }
