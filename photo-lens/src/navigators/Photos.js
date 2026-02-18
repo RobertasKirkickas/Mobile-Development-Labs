@@ -6,7 +6,7 @@ export default function PhotosNavigator() {
 	const Stack = createStackNavigator();
 	return (
 		<Stack.Navigator style={styles.PhotosNavigator}>
-			<Stack.Screen name='Photos' component={PhotosScreen} />
+			<Stack.Screen name='PhotosScreen' component={PhotosScreen} options={{ title: 'Photos' }} />
 		</Stack.Navigator>
 	);
 }

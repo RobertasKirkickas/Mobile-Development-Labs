@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator, FlatList, Image } from 'react-native';
 import { global } from '../config/global';
 
 export default function PhotosScreen({ navigation }) {
 	const [searchQuery, setSearchQuery] = useState('Beach');
 	const [photos, setPhotos] = useState();
+	const numberOfColumns = 2;
 
 	const searchPhotos = () => {};
 
@@ -25,7 +26,21 @@ export default function PhotosScreen({ navigation }) {
 
 	return (
 		<View style={styles.PhotosScreen}>
-			<Text>Photos screen</Text>
+			{photos && photos.length > 0 ? (
+				<View style={styles.resultsContainer}>
+					<FlatList
+						key={`photos-columns-${numberOfColumns}`}
+						data={photos}
+						numColumns={numberOfColumns}
+						style={{ margin: 10 }}
+						renderItem={({ item }) => <Image style={styles.resultImage} source={{ uri: item.urls.regular }} />}
+					/>
+				</View>
+			) : (
+				<View style={styles.loadingContainer}>
+					<ActivityIndicator size='large' color='#000' />
+				</View>
+			)}
 		</View>
 	);
 }
@@ -33,5 +48,14 @@ export default function PhotosScreen({ navigation }) {
 const styles = StyleSheet.create({
 	PhotosScreen: {
 		/* styles here */
+	},
+	loadingContainer: {
+		height: '100%',
+		justifyContent: 'center',
+	},
+	resultImage: {
+		flex: 1,
+		margin: 10,
+		height: 200,
 	},
 });
