@@ -7,12 +7,7 @@ export default function PhotosScreen({ navigation }) {
 	const [photos, setPhotos] = useState();
 	const numberOfColumns = 2;
 
-	const searchPhotos = () => {};
-
-	useEffect(() => {
-		searchPhotos();
-		console.log('Make a call to the API using the search query: ' + searchQuery);
-
+	const searchPhotos = () => {
 		fetch('https://api.unsplash.com/search/photos?client_id=' + global.unsplashAccessKey + '&query=' + searchQuery)
 			.then((response) => response.json())
 			.then((json) => {
@@ -22,6 +17,11 @@ export default function PhotosScreen({ navigation }) {
 			.catch((error) => {
 				console.error(error);
 			});
+	};
+
+	useEffect(() => {
+		searchPhotos();
+		console.log('Make a call to the API using the search query: ' + searchQuery);
 	}, [searchQuery]);
 
 	return (
@@ -42,8 +42,7 @@ export default function PhotosScreen({ navigation }) {
 									});
 								}}
 							>
-								{' '}
-								<Image style={styles.resultImage} source={{ uri: item.urls.regular }} />{' '}
+								<Image style={styles.resultImage} source={{ uri: item.urls.regular }} />
 							</Pressable>
 						)}
 					/>
