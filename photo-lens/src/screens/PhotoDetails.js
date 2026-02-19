@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator, Image, Linking } from 'react-native';
 import { global } from '../config/global';
 
 export default function PhotoDetailsScreen({ route, navigation }) {
@@ -25,7 +25,45 @@ export default function PhotoDetailsScreen({ route, navigation }) {
 		<View style={styles.PhotoDetailsScreen}>
 			{photoData ? (
 				<View style={styles.photoDetailsContainer}>
-					<Text>{photoData.description}</Text>
+					<Image style={styles.photoImage} source={{ uri: photoData.urls.regular }} />
+					<View style={styles.metaDataContainer}>
+						<Text style={styles.metaDataText}>
+							<Text style={{ fontWeight: 'bold' }}>Photographer:</Text>
+							{photoData.user.first_name} {photoData.user.last_name}
+						</Text>
+						<Text style={styles.metaDataText}>
+							<Text style={{ fontWeight: 'bold' }}>Location:</Text>
+							{photoData.location.title}
+						</Text>
+						<Text style={styles.metaDataText}>
+							<Text style={{ fontWeight: 'bold' }}>Num of views:</Text>
+							{photoData.views}
+						</Text>
+						<Text style={styles.metaDataText}>
+							<Text style={{ fontWeight: 'bold' }}>Num of downloads:</Text>
+							{photoData.downloads}
+						</Text>
+						<Text style={[styles.metaDataText, { marginTop: 10 }]}>
+							<Text style={{ fontWeight: 'bold' }}>View Photo:</Text>
+						</Text>
+						<Text
+							onPress={() => {
+								Linking.openURL(photoData.links.html);
+							}}
+						>
+							click here
+						</Text>
+						<Text style={styles.metaDataText}>
+							<Text style={{ fontWeight: 'bold' }}>Download Photo:</Text>
+						</Text>
+						<Text
+							onPress={() => {
+								Linking.openURL(photoData.links.download);
+							}}
+						>
+							click here
+						</Text>
+					</View>
 				</View>
 			) : (
 				<View style={styles.loadingContainer}>
@@ -43,5 +81,16 @@ const styles = StyleSheet.create({
 	loadingContainer: {
 		height: '100%',
 		justifyContent: 'center',
+	},
+	photoImage: {
+		width: '100%',
+		height: 300,
+		resizeMode: 'cover',
+	},
+	metaDataContainer: {
+		margin: 20,
+	},
+	metaDataText: {
+		fontSize: 17,
 	},
 });
