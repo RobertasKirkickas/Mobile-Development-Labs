@@ -8,7 +8,7 @@ export default function PhotosNavigator() {
 	const Stack = createStackNavigator();
 	return (
 		<Stack.Navigator style={styles.PhotosNavigator}>
-			<Stack.Screen name='PhotosScreen' component={PhotosScreen} options={{ title: 'Photos' }} />
+			<Stack.Screen name='PhotosScreen' component={PhotosScreen} options={{ headerShown: false }} />
 			<Stack.Screen name='Photo Details' component={PhotoDetailsScreen} />
 		</Stack.Navigator>
 	);

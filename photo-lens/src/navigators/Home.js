@@ -8,7 +8,7 @@ export default function HomeNavigator() {
 
 	return (
 		<Stack.Navigator style={styles.HomeNavigator}>
-			<Stack.Screen name='HomeScreen' component={HomeScreen} options={{ title: 'Photo Lens' }} />
+			<Stack.Screen name='HomeScreen' component={HomeScreen} options={{ headerShown: false }} />
 		</Stack.Navigator>
 	);
 }

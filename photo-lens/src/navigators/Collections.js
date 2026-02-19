@@ -6,7 +6,7 @@ export default function CollectionsNavigator() {
 	const Stack = createStackNavigator();
 	return (
 		<Stack.Navigator style={styles.CollectionsScreen}>
-			<Stack.Screen name='CollectionsScreen' component={CollectionsScreen} options={{ title: 'Collections' }} />
+			<Stack.Screen name='CollectionsScreen' component={CollectionsScreen} options={{ headerShown: false }} />
 		</Stack.Navigator>
 	);
 }

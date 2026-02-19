@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator, FlatList, Image, Pressable } from 'react-native';
 import { global } from '../config/global';
+import SearchForm from '../components/SearchForm';
 
 export default function PhotosScreen({ navigation }) {
 	const [searchQuery, setSearchQuery] = useState('Beach');
@@ -26,13 +27,14 @@ export default function PhotosScreen({ navigation }) {
 
 	return (
 		<View style={styles.PhotosScreen}>
+			<SearchForm setSearchQuery={setSearchQuery} />
 			{photos && photos.length > 0 ? (
 				<View style={styles.resultsContainer}>
 					<FlatList
 						key={`photos-columns-${numberOfColumns}`}
 						data={photos}
 						numColumns={numberOfColumns}
-						style={{ margin: 10 }}
+						style={{ margin: 10, marginBottom: 100 }}
 						renderItem={({ item }) => (
 							<Pressable
 								style={styles.resultImageTouchable}
