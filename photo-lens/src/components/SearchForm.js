@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Pressable, Keyboard } from 'react-native';
 import Feather from '@expo/vector-icons/Feather';
 
-export default function SearchForm({ setSearchQuery }) {
+export default function SearchForm({ setSearchQuery, type }) {
 	const [text, setText] = useState();
 	const changeHandler = (val) => {
 		setText(val);
@@ -19,7 +19,7 @@ export default function SearchForm({ setSearchQuery }) {
 					submitHandler();
 				}}
 				style={styles.input}
-				placeholder='Search photos...'
+				placeholder={`Search ${type}...`}
 				onChangeText={changeHandler}
 			/>
 			<Pressable onPress={() => submitHandler()} style={styles.searchButton}>
